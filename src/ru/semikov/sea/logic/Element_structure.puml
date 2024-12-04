@@ -1,0 +1,383 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "ru.semikov.sea.logic.Element",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1979150692 { 
+   	label=semikov
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_529611579 { 
+   	label=sea
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Element474152458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Element</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   ship: Ship [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   shuted: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   state: ElementStates [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   x: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   y: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FieldShip474152458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FieldShip</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   elements: Element[][] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   ships: ArrayList&lt;Ship&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Draw()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ GetElement(x: int, y: int): ElementStates</TD></TR>
+<TR><TD ALIGN="LEFT" >+ PutShip()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ SetElement(x: int, y: int, state: ElementStates): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ doShot(x: int, y: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isBound(x: int, y: int): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GameController480857514[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GameController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   model: GameModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   view: GameView [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ actionPerformed(e: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mousePressed(arg0: MouseEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GameModel480857514[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GameModel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   currentPlayer: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   listeners: ArrayList&lt;ISubscriber&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   playerFiledA: FieldShip [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   playerFiledB: FieldShip [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   robot: Robot [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ doShotByOpponent(x: int, y: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ newGame()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ register(o: ISubscriber)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ unRegister(o: ISubscriber)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateSubscribers()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GameView480857514[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GameView</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   controller: GameController [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mntmAbout: JMenuItem [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mntmExit: JMenuItem [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mntmNewGame: JMenuItem [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   model: GameModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panelPlayerA: PanelFieldA [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panelPlayerB: PanelFieldB [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panelScore: ScoreField [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ attachController()</TD></TR>
+<TR><TD ALIGN="LEFT" >- buildUI()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PanelField480857514[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PanelField</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   model: GameModel [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># paintComponent(g: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" ># paintElement(g: Graphics, i: int, j: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PanelFieldA480857514[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PanelFieldA</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- getColorByStateElement(state: ElementStates): Color</TD></TR>
+<TR><TD ALIGN="LEFT" ># paintElement(g: Graphics, i: int, j: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PanelFieldB480857514[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PanelFieldB</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- getColorByStateElement(state: ElementStates): Color</TD></TR>
+<TR><TD ALIGN="LEFT" ># paintElement(g: Graphics, i: int, j: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Robot474152458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Robot</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   field: FieldShip [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   rand: Random [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   x: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   y: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ move(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ tryShot(): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ScoreField480857514[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ScoreField</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   model: GameModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ships: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># paintComponent(g: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Ship474152458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Ship</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   dx: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dy: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   elements: ArrayList&lt;Element&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   field: FieldShip [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   health: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   size: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   state: ShipStates [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   x: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   y: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- ByPass(tp: TrigerShip): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- CheckPlace(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- GetPlace()</TD></TR>
+<TR><TD ALIGN="LEFT" >- SetShip()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TrigerShip474152458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TrigerShip</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   field: FieldShip [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Border(m: int, n: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Ship(m: int, n: int): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TrigerShipCheck474152458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TrigerShipCheck</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Border(m: int, n: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Ship(m: int, n: int): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TrigerShipSet474152458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TrigerShipSet</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   ship: Ship [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Border(m: int, n: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Ship(m: int, n: int): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+Element474152458 -> Ship474152458[label="ship
+[0..1]"];
+FieldShip474152458 -> Element474152458[label="elements
+[0..*]"];
+FieldShip474152458 -> Ship474152458[label="ships
+[0..1]"];
+GameController480857514 -> GameModel480857514[label="model
+[0..1]"];
+GameModel480857514 -> FieldShip474152458[label="playerFiledA
+[0..1]"];
+GameModel480857514 -> FieldShip474152458[label="playerFiledB
+[0..1]"];
+GameModel480857514 -> PanelField480857514[label="listeners
+[0..1]", arrowhead=none];
+GameModel480857514 -> Robot474152458[label="robot
+[0..1]"];
+GameView480857514 -> GameController480857514[label="controller
+[0..1]"];
+GameView480857514 -> GameModel480857514[label="model
+[0..1]"];
+PanelField480857514 -> GameModel480857514[label="model
+[0..1]"];
+PanelField480857514 -> PanelFieldA480857514[arrowhead=none, arrowtail=empty, dir=both];
+PanelField480857514 -> PanelFieldB480857514[arrowhead=none, arrowtail=empty, dir=both];
+PanelField480857514 -> ScoreField480857514[arrowhead=none];
+Robot474152458 -> FieldShip474152458[label="field
+[0..1]"];
+ScoreField480857514 -> GameModel480857514[label="model
+[0..1]"];
+Ship474152458 -> Element474152458[label="elements
+[0..1]"];
+Ship474152458 -> FieldShip474152458[label="field
+[0..1]"];
+TrigerShip474152458 -> FieldShip474152458[label="field
+[0..1]"];
+TrigerShip474152458 -> TrigerShipCheck474152458[arrowhead=none, arrowtail=empty, dir=both];
+TrigerShip474152458 -> TrigerShipSet474152458[arrowhead=none, arrowtail=empty, dir=both];
+TrigerShipSet474152458 -> Ship474152458[label="ship
+[0..1]"];
+    
+}
+@enduml
