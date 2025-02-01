@@ -15,17 +15,17 @@ public class PanelFieldB extends PanelField {
 	private Color getColorByStateElement(ElementStates state) {
 		switch (state) {
 		case enBorder:
-			return new Color(225, 225, 255);
+			return Color.blue;
 		case enWater:
-			return new Color(225, 225, 255);
+			return Color.blue;
 		case enWell:
-			return new Color(225, 225, 255);
+			return Color.blue;
 		case enInjured:
 			return Color.red;
 		case enKilled:
 			return Color.gray;
 		case enMissed:
-			return Color.black;
+			return Color.darkGray;
 		}
 		
 		return Color.blue;
@@ -38,9 +38,12 @@ public class PanelFieldB extends PanelField {
 		g.setColor(getColorByStateElement(state));
 		
 		if (state == ElementStates.enMissed) {
-			g.fillRect(i*15+6, j*15+6, 4, 4);
+			g.setColor(Color.blue);
+			g.fillRect(i*40+1, j*40+1, 39, 39);
+			g.setColor(getColorByStateElement(state));
+			g.fillRect(i*40+16, j*40+16, 8, 8);
 		} else {
-			g.fillRect(i*15+1, j*15+1, 14, 14);
+			g.fillRect(i*40+1, j*40+1, 39, 39);
 		}
 	}
 

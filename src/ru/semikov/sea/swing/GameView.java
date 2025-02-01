@@ -1,13 +1,10 @@
 package ru.semikov.sea.swing;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import javax.swing.*;
 
 public class GameView extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -67,26 +64,40 @@ public class GameView extends JFrame {
 	private void buildUI() {
 		this.setTitle("SeaBattle");
 		this.setResizable(false);
-		this.setBounds(400, 300, 483, 228);
+		this.setBounds(0, 0, 1500, 999);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
-		
+
+
+
 		panelPlayerA = new PanelFieldA(model);
-		panelPlayerA.setBounds(20, 31, 151, 151);
+		panelPlayerA.setBounds(0, 31, 400, 400);
 		this.getContentPane().add(panelPlayerA);
 		
 		panelPlayerB = new PanelFieldB(model);
-		panelPlayerB.setBounds(190, 31, 151, 151);
+		panelPlayerB.setBounds(500, 31, 400, 400);
 		this.getContentPane().add(panelPlayerB);
 		
 		panelScore = new ScoreField(model);
 		
-		panelScore.setBounds(370, 31, 90, 151);
+		panelScore.setBounds(1000, 31, 200, 200);
 		panelScore.setBackground(new Color(225, 225, 255));
 		this.getContentPane().add(panelScore);
+
+		Icon imageIcon = new ImageIcon("C:/Hemul_JAVA/SeaBattle_remake/src/ru/semikov/sea/swing/Radar.gif");
+		JLabel label = new JLabel(imageIcon);this.getContentPane().add(label);
+		label.setBounds(650, 450, 200, 200);
+		label.setLocation(650,450);
+		label.repaint();
+
+		Icon imageIcon1 = new ImageIcon("C:/Hemul_JAVA/SeaBattle_remake/src/ru/semikov/sea/swing/256.jpg");
+		JLabel label1 = new JLabel(imageIcon1);this.getContentPane().add(label1);
+		label1.setBounds(750, 450, 1500, 999);
+		label1.setLocation(0,0);
+		label.repaint();
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 477, 21);
+		menuBar.setBounds(0, 0, 90, 31);
 		this.getContentPane().add(menuBar);
 		
 		JMenu mnGame = new JMenu("Game");
@@ -106,6 +117,9 @@ public class GameView extends JFrame {
 		
 		mntmAbout = new JMenuItem("About");
 		mnHelp.add(mntmAbout);
+
+
+
 	}
 
 

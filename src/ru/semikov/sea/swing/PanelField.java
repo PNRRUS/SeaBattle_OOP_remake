@@ -1,6 +1,9 @@
 package ru.semikov.sea.swing;
 
-import java.awt.Graphics;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 abstract public class PanelField extends JPanel implements ISubscriber {
@@ -14,10 +17,13 @@ abstract public class PanelField extends JPanel implements ISubscriber {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		// рисуем решётку
+
+
+
+			// рисуем решётку
 		for(int i = 0; i < 11; i++) {
-			g.drawLine(i*15, 0, i*15,150);
-			g.drawLine(0,i*15, 150, i*15);
+			g.drawLine(i*40, 0, i*40,400);
+			g.drawLine(1,i*40, 400, i*40);
 		}
 		
 		// рисуем элементы
@@ -26,6 +32,10 @@ abstract public class PanelField extends JPanel implements ISubscriber {
 				paintElement(g, i, j);
 			}
 		}
+		g.drawString("Ваша задача:  ", 20, 490);
+		g.drawString("сбить корабли противника, не потеряв свои! ", 20, 610);
+		g.drawString("Удачи, канонир!", 20, 630);
+
 	}
 
 	/**

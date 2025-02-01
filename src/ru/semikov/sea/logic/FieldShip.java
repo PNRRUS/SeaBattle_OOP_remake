@@ -34,16 +34,17 @@ public class FieldShip {
 			}
 		}
 		
-		// заполняем поле короблями
+		// заполняем поле кораблями
 		ships = new ArrayList<Ship>(); 
 		for(int i=4; i>0; i--) {
 			for(int j=(5-i); j>0; j--) {
 				Ship ship=new Ship(this,i);
 				ships.add(ship);
+				System.out.println(" size " +ship.size + " health " + ship.health + " state " + ship.state);
 			}
 		}
 		
-		// удаляем окружение коробля
+		// удаляем окружение корабля
 		for(int j=0; j<10; j++) {
 			for(int i=0; i<10; i++) {
 				Element element = elements[i][j];
@@ -89,6 +90,7 @@ public class FieldShip {
 			}
 		}
 		return shot;
+
 	}
 	
 	/**

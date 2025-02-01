@@ -52,8 +52,8 @@ public class GameController implements ActionListener {
 	 * @param arg0
 	 */
 	public void mousePressed(MouseEvent arg0) {
-		int x = arg0.getX() / 15;
-		int y = arg0.getY() / 15;
+		int x = arg0.getX() / 40;
+		int y = arg0.getY() / 40;
 		model.doShotByOpponent(x, y);
 	}
 

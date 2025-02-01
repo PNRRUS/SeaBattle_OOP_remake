@@ -14,17 +14,17 @@ public class PanelFieldA extends PanelField {
 	private Color getColorByStateElement(ElementStates state) {
 		switch (state) {
 		case enBorder:
-			return new Color(215, 215, 255);
+			return Color.blue;
 		case enWater:
-			return new Color(225, 225, 255);
+			return Color.blue;
 		case enWell:
-			return Color.green;
+			return Color.darkGray;
 		case enInjured:
 			return Color.red;
 		case enKilled:
-			return Color.gray;
+			return Color.blue;
 		case enMissed:
-			return Color.black;
+			return Color.darkGray;
 		}
 		return Color.blue;
 	}
@@ -35,10 +35,16 @@ public class PanelFieldA extends PanelField {
 		ElementStates state = model.playerFiledA.GetElement(i, j);
 		g.setColor(getColorByStateElement(state));
 		if (state == ElementStates.enMissed) {
-			g.fillRect(i*15+6, j*15+6, 4, 4);
+			g.setColor(Color.blue);
+			g.fillRect(i*40+1, j*40+1, 39, 39);
+			g.setColor(getColorByStateElement(state));
+			g.fillRect(i*40+16, j*40+16, 8, 8);
 		} else {
-			g.fillRect(i*15+1, j*15+1, 14, 14);
+			g.fillRect(i*40+1, j*40+1, 39, 39);
 		}
+		g.drawString("Ваша задача:  ", 145, 490);
+		g.drawString("сбить корабли противника, не потеряв свои! ", 20, 610);
+		g.drawString("Удачи, канонир!", 20, 630);
 	}
 	
 }

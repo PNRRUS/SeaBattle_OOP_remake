@@ -34,14 +34,15 @@ public class ScoreField extends JPanel implements ISubscriber {
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < (i+1); j++) {
 				g.setColor(Color.gray);
-				g.fillRect(j*15+10, i*15+5, 13, 13);
+				g.fillRect(j*40+10, i*40+5, 39, 39);
 			}
 			g.setColor(Color.black);
-			g.drawString(String.valueOf(m[i]), 75, i*15+16);
+			g.drawString(String.valueOf(m[i]), 180, i*40+30);
 		}
-		
+
 		String st = "Alive: ".concat(String.valueOf(ships));
-		g.drawString(st, 25, 100);
+		g.drawString(st, 145, 190);
+
 	}
 
 	@Override
